@@ -1,0 +1,650 @@
+/* ------------------- Global Reset ------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  background-color: var(--bg, #90dcbb) !important;
+  color: var(--text, #0d341e);
+  scroll-behavior: smooth;
+}
+
+/* ------------------- Custom Animations ------------------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ------------------- Links ------------------- */
+a {
+  font-weight: 500;
+  color: var(--brand, #0d341e);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+a:hover {
+  color: #14532d;
+}
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #14532d;
+  transition: width 0.3s ease;
+}
+a:hover::after {
+  width: 100%;
+}
+
+/* ------------------- Buttons ------------------- */
+button {
+  border-radius: 12px;
+  border: none;
+  padding: 0.8em 1.8em;
+  font-size: 1.1em;
+  font-weight: 600;
+  font-family: inherit;
+  background: linear-gradient(90deg, #0d341e, #14532d);
+  background-size: 200% 200%;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: gradientShift 4s ease infinite;
+  box-shadow: 0 4px 15px rgba(13, 52, 30, 0.2);
+}
+button:hover {
+  background: linear-gradient(90deg, #14532d, #0d341e);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(13, 52, 30, 0.3);
+}
+button:focus {
+  outline: 2px solid #14532d;
+}
+
+/* ------------------- Root Variables ------------------- */
+:root {
+  --bg: #ffffff;
+  --card: #f9f9f9;
+  --text: #0d341e;
+  --brand: #0d341e;
+}
+
+/* ------------------- Body & Layout ------------------- */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ------------------- Navbar ------------------- */
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(90deg, #1a2e1a, #3b7a3e);
+  background-size: 200% 200%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.4s ease;
+  animation: gradientShift 8s ease infinite;
+  height: 90px;
+}
+
+nav:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+nav .logo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+nav .logo:hover {
+  transform: scale(1.05);
+}
+
+nav .links {
+  display: flex;
+  gap: 2rem;
+}
+
+nav .links a {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+nav .links a:hover {
+  color: #a7f3d0;
+}
+
+/* ------------------- Page Containers ------------------- */
+.home, .login, .signup, .verify, .upload {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background-color: var(--bg);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* ------------------- Card Wrapper ------------------- */
+.home .card, 
+.login .card, 
+.signup .card, 
+.verify .card, 
+.upload .card {
+  width: 100%;
+  max-width: 700px;
+  padding: 4rem 3rem;
+  border-radius: 16px;
+  background-color: var(--card);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.home .card:hover, 
+.login .card:hover, 
+.signup .card:hover, 
+.verify .card:hover, 
+.upload .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* ------------------- Home Page Specific ------------------- */
+.home .card h1 {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #0d341e, #14532d, #1e8449);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 5s ease infinite;
+  text-shadow: 0 2px 10px rgba(13, 52, 30, 0.1);
+}
+
+.home .card p {
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  color: var(--text);
+}
+
+.home .card .buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home .card .buttons button {
+  min-width: 160px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  animation: pulse 2s infinite;
+}
+
+.home .card .buttons button:hover {
+  animation: none;
+}
+
+/* ------------------- Headings ------------------- */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2.8rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+/* ------------------- Forms & Inputs ------------------- */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="file"] {
+  padding: 0.9rem 1.3rem;
+  border-radius: 10px;
+  border: 2px solid #0d341e;
+  background-color: #ffffff;
+  color: #0d341e;
+  font-size: 1.1rem;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #14532d;
+  box-shadow: 0 0 15px rgba(20, 83, 45, 0.4);
+  transform: scale(1.02);
+}
+
+/* ------------------- File Upload ------------------- */
+.upload input[type="file"] {
+  width: 100%;
+}
+
+/* ------------------- Messages ------------------- */
+p.message {
+  margin-top: 1rem;
+  text-align: center;
+  color: #b91c1c;
+  font-size: 1.2rem;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* ------------------- Hero Section ------------------- */
+.hero {
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+  padding: 8rem 2rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(61, 165, 90, 0.1), transparent 30%),
+              radial-gradient(circle at bottom left, rgba(13, 52, 30, 0.1), transparent 30%);
+  z-index: 0;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero .tagline {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #14532d;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero .description {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero .btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.hero .btn-group button {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.3rem;
+}
+
+/* ------------------- About, Services, Features, CTA Sections ------------------- */
+.about, .services, .features, .cta {
+  max-width: 1200px;
+  margin: 6rem auto;
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  color: var(--text);
+  background-color: var(--section-bg);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease;
+  animation: fadeInUp 1s ease-out;
+}
+
+.about:hover, .services:hover, .features:hover, .cta:hover {
+  transform: translateY(-8px);
+}
+
+.about h2,
+.services h2,
+.features h2 {
+  font-size: 3.2rem;
+  margin-bottom: 2rem;
+  color: var(--text);
+}
+
+.cta h2 {
+  color: #142f06;
+  font-size: 3.2rem;
+}
+
+.services .service-list h3 {
+  font-size: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.services .service-list p {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.5rem;
+  line-height: 2.2;
+}
+
+.features li {
+  position: relative;
+  padding-left: 3.5rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.features li:nth-child(1) { animation-delay: 0.1s; }
+.features li:nth-child(2) { animation-delay: 0.2s; }
+.features li:nth-child(3) { animation-delay: 0.3s; }
+.features li:nth-child(4) { animation-delay: 0.4s; }
+.features li:nth-child(5) { animation-delay: 0.5s; }
+
+.features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #3ea55a;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+/* ------------------- CTA ------------------- */
+.cta {
+  background: linear-gradient(135deg, #f9fdf7 0%, #e8f5e9 100%);
+  color: #02290f;
+  padding: 5rem 2.5rem;
+}
+
+.cta p {
+  font-size: 1.6rem;
+  line-height: 1.9;
+  margin-bottom: 3rem;
+}
+
+/* ------------------- Services Cards ------------------- */
+.services .service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding: 0 2rem;
+}
+
+.services .service-card {
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.services .service-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.services .service-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  color: #0d341e;
+}
+
+.services .service-card p {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #0d341e;
+}
+
+.cta .btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.cta .btn-group button {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.3rem;
+}
+
+/* ------------------- Unique Elements ------------------- */
+.floating-leaf {
+  position: absolute;
+  opacity: 0.3;
+  z-index: 0;
+  animation: float 6s ease-in-out infinite;
+}
+
+.leaf-1 {
+  top: 20%;
+  left: 10%;
+  font-size: 4rem;
+  color: #0d341e;
+  animation-delay: 0s;
+}
+
+.leaf-2 {
+  top: 60%;
+  right: 15%;
+  font-size: 3.5rem;
+  color: #14532d;
+  animation-delay: 2s;
+}
+
+.leaf-3 {
+  bottom: 25%;
+  left: 15%;
+  font-size: 5rem;
+  color: #1e8449;
+  animation-delay: 4s;
+}
+
+/* ------------------- Responsive ------------------- */
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+  
+  .hero .tagline {
+    font-size: 1.7rem;
+  }
+  
+  h1 {
+    font-size: 2.8rem;
+  }
+  
+  h2 {
+    font-size: 2.4rem;
+  }
+  
+  h3 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+  }
+
+  nav .links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+  
+  .home .card, 
+  .login .card, 
+  .signup .card, 
+  .verify .card, 
+  .upload .card {
+    width: 95%;
+    padding: 3rem 2rem;
+  }
+  
+  .hero {
+    padding: 6rem 1.5rem 4rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+  
+  .hero .tagline {
+    font-size: 1.5rem;
+  }
+  
+  .hero .description {
+    font-size: 1.2rem;
+  }
+  
+  .cta .btn-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta .btn-group button {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .services .service-cards {
+    grid-template-columns: 1fr;
+    gap: 2;
+  }
+}
+.footer {
+  width: 100%;
+  background: linear-gradient(90deg, #1a2e1a, #2e7d32); /* Green gradient */
+  padding: 15px 0;
+  text-align: center;
+  color: white;
+  font-weight: 500;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.footer p {
+  margin: 0;
+}
