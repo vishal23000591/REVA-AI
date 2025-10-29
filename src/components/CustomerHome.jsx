@@ -177,7 +177,15 @@ export default function CustomerHome() {
   <p>Identify your strengths and areas for improvement based on your skills.</p>
   <Link to="https://skill-gap-analysis-2-cfuw.onrender.com">Analyze Skills →</Link>
 </div>
-<div>
+<div
+tyle={{
+    padding: "1.5rem",
+    border: "1px solid #ccc",
+    borderRadius: "10px",
+    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+    background: "#fff",
+  }}
+>
   <h3>Skill Assessment</h3>
   <p>Test your knowledge and evaluate your proficiency in your chosen role.</p>
   <Link to="https://reva-ai-skill-assessment.onrender.com">Start Assessment →</Link>
