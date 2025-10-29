@@ -13,6 +13,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Verify from "./components/Verify";
 import Footer from "./components/Footer";
+import Contact from "./components/Contact"; // ✅ New contact page
 
 // Customer components
 import CustomerHome from "./components/CustomerHome";
@@ -21,13 +22,13 @@ import CustomerProfile from "./components/CustomerProfile";
 import ATSScorer from "./components/ATSScorer";
 import ResumeBuilder from "./components/ResumeBuilder";
 import CustomerJobs from "./components/CustomerJobs";
+import ApplicationPage from "./components/ApplicationPage";
 
 // Admin components
 import AdminSignup from "./components/AdminSignup";
 import AdminLogin from "./components/AdminLogin";
 import AdminDashboard from "./components/AdminDashboard";
 import AddJobs from "./components/AddJobs";
-import ApplicationPage from "./components/ApplicationPage";
 
 // ----------------------
 // Protected Routes
@@ -76,6 +77,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/verify" element={<Verify />} />
+          <Route path="/contact" element={<Contact />} /> {/* ✅ New Contact Route */}
 
           {/* Customer Routes */}
           <Route
@@ -127,14 +129,13 @@ export default function App() {
             }
           />
           <Route
-  path="/customer/apply/:jobId"
-  element={
-    <ProtectedRoute>
-      <ApplicationPage />
-    </ProtectedRoute>
-  }
-/>
-
+            path="/customer/apply/:jobId"
+            element={
+              <ProtectedRoute>
+                <ApplicationPage />
+              </ProtectedRoute>
+            }
+          />
 
           {/* Admin Routes */}
           <Route path="/admin/signup" element={<AdminSignup />} />

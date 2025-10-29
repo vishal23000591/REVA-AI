@@ -8,7 +8,7 @@ export default function Navbar() {
         <Link to="/" style={linkStyle}>Home</Link>
         <Link to="/login" style={linkStyle}>Login</Link>
         <Link to="/signup" style={linkStyle}>Signup</Link>
-        <Link to="/verify" style={linkStyle}>Verify</Link>
+        <Link to="/contact" style={linkStyle}>Contact</Link>
       </div>
     </nav>
   );
@@ -22,7 +22,7 @@ const navStyle = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+  
   position: "sticky",
   top: 0,
   zIndex: 1000,
