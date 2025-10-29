@@ -12,7 +12,7 @@ export default function AddJobs() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3002/api/addjobs")
+    fetch("https://reva-ai-backend.onrender.com/api/addjobs")
       .then((res) => res.json())
       .then((data) => setJobs(data))
       .catch((err) => console.error(err));
@@ -21,7 +21,7 @@ export default function AddJobs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3002/api/addjobs", {
+      const res = await fetch("https://reva-ai-backend.onrender.com/api/addjobs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, company, location, type, description }),

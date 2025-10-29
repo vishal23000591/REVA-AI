@@ -49,7 +49,7 @@ export default function CustomerNavbar() {
           </Link>
         </li>
         <li>
-          <Link to="/customer/upload" style={{ color: "#fff", textDecoration: "none" }}>
+          <Link to="https://bhuvanesh1112006-reva.hf.space" style={{ color: "#fff", textDecoration: "none" }}>
             Upload Documents
           </Link>
         </li>
@@ -59,7 +59,7 @@ export default function CustomerNavbar() {
           </Link>
         </li>
         <li>
-          <Link to="/customer/resume-builder" style={{ color: "#fff", textDecoration: "none" }}>
+          <Link to="https://resume-builder-c5o9.onrender.com/builder" style={{ color: "#fff", textDecoration: "none" }}>
             Resume Builder
           </Link>
         </li>

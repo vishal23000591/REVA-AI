@@ -28,7 +28,7 @@ export default function FileUpload() {
     const fetchFiles = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:3002/api/files/user-files", {
+        const res = await axios.get("https://reva-ai-backend.onrender.com/api/files/user-files", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUserFiles(res.data.files);
@@ -85,7 +85,7 @@ export default function FileUpload() {
 
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3002/api/files/upload", formData, {
+      const res = await axios.post("https://reva-ai-backend.onrender.com/api/files/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

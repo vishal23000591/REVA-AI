@@ -143,7 +143,7 @@ export default function CustomerHome() {
           <div style={{ padding: "1.5rem", border: "1px solid #ccc", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)", background: "#fff" }}>
             <h3> Resume Builder</h3>
             <p>Create a professional resume with our AI-powered builder.</p>
-            <Link to="https://resume-builder-c5o9.onrender.com/builder">Build Resume →</Link>
+            <Link to="https://reva-ai-resume-builder.onrender.com/builder">Build Resume →</Link>
           </div>
 
           <div style={{ padding: "1.5rem", border: "1px solid #ccc", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)", background: "#fff" }}>
@@ -175,7 +175,12 @@ export default function CustomerHome() {
 >
   <h3>Skill Gap Analysis</h3>
   <p>Identify your strengths and areas for improvement based on your skills.</p>
-  <Link to="/customer/skill-gap">Analyze Skills →</Link>
+  <Link to="https://skill-gap-analysis-2-cfuw.onrender.com">Analyze Skills →</Link>
+</div>
+<div>
+  <h3>Skill Assessment</h3>
+  <p>Test your knowledge and evaluate your proficiency in your chosen role.</p>
+  <Link to="https://reva-ai-skill-assessment.onrender.com">Start Assessment →</Link>
 </div>
 
         </div>
