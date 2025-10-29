@@ -178,7 +178,7 @@ export default function CustomerHome() {
   <Link to="https://skill-gap-analysis-2-cfuw.onrender.com">Analyze Skills →</Link>
 </div>
 <div
-tyle={{
+style={{
     padding: "1.5rem",
     border: "1px solid #ccc",
     borderRadius: "10px",
